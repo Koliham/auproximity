@@ -26,10 +26,16 @@ which will serve the purpose of sending positional data to the backend server.
 > Note: This project uses `yarn`, so install it if you do not have it already.
 
 Follow the steps below to run a server and webui with hot-reload
+#### Development Server - Backend
+- in the `auproximity` directory
 - Run `yarn install` to install all dependencies
-- Run `yarn serve` in the `auproximity` directory
-- Run `yarn serve` in the `auproximity-webui` directory
-- In development, the server will listen on port `8079` and the webui will listen on port `8080`
+- Run `yarn serve`\
+- Development server will listen on port `8079`
+#### Webui Server - Fronted
+- in the `auproximity/auproximity-webui` directory
+- Run `yarn install` to install all dependencies
+- Run `yarn serve`
+- Development server will listen on port `8080`
 - In production, the webui should be served from the same origin as the server. The server 
   should also have an ssl reverse proxy in front of it, like nginx, or on a PaaS like Heroku.
 

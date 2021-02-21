@@ -66,8 +66,6 @@
       "ecmaVersion": 2020
     },
     "rules": {
-      "quotes": "error",
-      "semi": "error"
     }
   },
   "browserslist": [

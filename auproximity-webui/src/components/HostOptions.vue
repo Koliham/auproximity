@@ -42,7 +42,16 @@
         :disabled="!$store.state.joinedRoom"
         @change="updateOptions"
       ></v-checkbox>
+      <v-btn
+          color="success"
+          class="mr-4"
+          type="button"
+          @click="updateLobbyDeails"
+        >
+          Lobby Details
+        </v-btn>
     </v-form>
+    <ConfirmLobbyDetails ref="updateLobbyDetails"></ConfirmLobbyDetails>
   </v-card>
 </template>
 
@@ -51,9 +60,22 @@ import { Component, Vue } from 'vue-property-decorator'
 import { Socket } from 'vue-socket.io-extended'
 import ClientSocketEvents from '@/models/ClientSocketEvents'
 import { HostOptions as HostOptionsModel } from '@/models/RoomModel'
+import ConfirmLobbyDetails from '@/components/ConfirmLobbyDetails.vue'
 
-@Component({})
+@Component({
+  components: {
+    ConfirmLobbyDetails
+  }
+})
 export default class HostOptions extends Vue {
+
+  popupRef: any = this.$refs.updateLobbyDetails;
+
+  updateLobbyDeails () {
+    console.log(this.$refs.updateLobbyDetails)
+    this.popupRef.open('Test', 'Are you sure?', { color: 'red' }).then((confirm: boolean) => { console.log(confirm) })
+  }
+
   updateOptions () {
     this.$socket.client.emit(
       ClientSocketEvents.SetOptions,
